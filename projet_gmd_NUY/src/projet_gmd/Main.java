@@ -22,6 +22,10 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+	}
+
+	public String getRow(String name) {
 		// GetDiseaseByName Orphanumber / Name
 		// GetDiseaseClinicalSignsNoLang Orphanumber  / clinical sign name
 		System.out.println("Orphan DB v1.0");
@@ -48,7 +52,12 @@ public class Main {
 		ViewResult result = db.queryView(query);
 		System.out.println("Done!");
 		for (ViewResult.Row row : result.getRows()) {
-			try {
+			String row_ = row.getValue();
+			if(row_.contains(name)) {
+				return row_;
+			}
+			System.out.println(row.getValue());
+			/*try {
 				ClinicalSign cs = mapper.readValue(row.getValue(), ClinicalSign.class);
 				System.out.println(cs.disease.id);
 			} catch (JsonParseException e) {
@@ -57,9 +66,9 @@ public class Main {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			}*/
 		}
 		System.out.println("Terminated.");
+		return null;
 	}
-
 }
