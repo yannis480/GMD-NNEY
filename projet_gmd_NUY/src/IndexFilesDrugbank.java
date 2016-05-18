@@ -28,7 +28,7 @@ import org.apache.lucene.store.FSDirectory;
 public class IndexFilesDrugbank 
 {
 
-    private IndexFilesDrugbank() {}
+    public IndexFilesDrugbank() {}
 
     /** Index all text files under a directory. */
     public static void index() 

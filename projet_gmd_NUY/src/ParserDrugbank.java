@@ -22,7 +22,7 @@ public class ParserDrugbank
 		try {
 			SAXParser saxParser = saxParserFactory.newSAXParser();
 			HandlerDrugbank handler = new HandlerDrugbank();
-			saxParser.parse("./drugbank/drugbank2.xml", handler);
+			saxParser.parse("./drugbank/drugbank.xml", handler);
 
 			ArrayList<String> liste = handler.getListe();
 			FileWriter fw = new FileWriter ("./drugbank/drugParse.txt");

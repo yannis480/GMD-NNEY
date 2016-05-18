@@ -14,7 +14,7 @@ public class HandlerDrugbank extends DefaultHandler
 	boolean b_indication = false;
 	boolean b_toxicity = false;
 	boolean b_synonym = false;
-
+	
 	//return list of drug
 	public ArrayList<String> getListe() 
 	{
@@ -73,7 +73,7 @@ public class HandlerDrugbank extends DefaultHandler
 		boolean temp = (contenu.indexOf(">") != -1);
 		boolean temp1 = (contenu.length()>1);
 
-		if (!DataContain & !temp & temp1) 
+		if (!DataContain  & !temp & temp1) 
 		{
 
 			if (b_name) 

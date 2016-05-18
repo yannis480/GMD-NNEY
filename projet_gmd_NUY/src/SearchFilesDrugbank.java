@@ -1,28 +1,17 @@
 package projet_gmd;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
@@ -33,18 +22,29 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
 
 //import GUI.TextAreaOutputStream;
 
 public class SearchFilesDrugbank 
 {
 	public SearchFilesDrugbank() {}
+	
+	public static void main(String[] args) throws Exception
+	{		
+		ParserDrugbank p = new ParserDrugbank();
+		
+		p.fileToIndex();
+		
+		IndexFilesDrugbank i = new IndexFilesDrugbank();
+		
+		i.index();
+		run(null);
+	}
 
 	public static void run(String str) throws Exception 
 	{
 		//System.setOut( TextAreaOutputStream.getOut() );
-		
+		//String str = null;
 		Path INDEX_DIR = Paths.get("./drugbank/index");
 		String queries = null;
 		int repeat = 0;
